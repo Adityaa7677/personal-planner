@@ -24,10 +24,19 @@ The app uses local-first architecture (localStorage abstraction ready for SQLite
 ├── vite.config.ts              # Vite configuration (with Vitest & Tailwind)
 ├── src/
 │   ├── main.tsx                # App bootstrap
-│   ├── App.tsx                 # Minimal blank app shell (editorial header, status bar, container)
+│   ├── App.tsx                 # Main layout: TimetableHeader, GoalsSidebar, NowCard, WeekGrid, Slide-over, Modal
+│   ├── components/
+│   │   └── timetable/
+│   │       ├── TimetableHeader.tsx  # Week navigation (< Today >), Goals toggle, Theme switch
+│   │       ├── NowCard.tsx          # Hero "Now" card with getNowSuggestion, "Done", and "Skip"
+│   │       ├── WeekGrid.tsx         # 7-day time grid (07:00-23:00), hairline rules, current-time marker
+│   │       ├── DaySlideOver.tsx     # Slide-over daily plan notes and block manager
+│   │       ├── BlockEditModal.tsx   # Direct block editor dialog for grid blocks
+│   │       └── GoalsSidebar.tsx     # Collapsible reserved goals panel with smooth slide animation
 │   ├── core/
 │   │   ├── types.ts            # Type definitions: Goal, Subtask, Block, Recurrence, FreeWindow, NowSuggestion
 │   │   ├── storage.ts          # Storage abstraction interface & LocalStorage implementation
+│   │   ├── dayNotes.ts         # Persistent daily focus intention notes storage
 │   │   ├── store.ts            # Zustand store integrated with storage adapter
 │   │   ├── actions.ts          # Pure domain logic functions with JSDoc annotations
 │   │   ├── seed.ts             # Default initial seed data (2 goals with subtasks, college block)
@@ -65,17 +74,28 @@ The app uses local-first architecture (localStorage abstraction ready for SQLite
 - [x] **Milestone 5: Verification & Tests**
   - Write and run Vitest tests for `getFreeWindows` and `getNowSuggestion`.
   - Validate all edge cases (exact bounds, overlapping, overnight boundaries, empty days).
-- [x] **Milestone 6: Blank App Shell UI**
-  - Build minimal, elegant app shell in `App.tsx` showcasing warm paper texture/tones, hairline borders, typography, theme toggle, and live status of storage and seed data.
-  - Zero clutter, no default SaaS widgets.
+- [x] **Milestone 6: Main Timetable Screen**
+  - Build week view with 7 day columns and hour rows (07:00–23:00).
+  - Current-time horizontal indicator line on today's column with live time badge.
+  - Fixed blocks (college) rendered in quiet muted tones; flexible blocks rendered in rich paper with goal accent strips.
+  - Prominent "Now" card driven by `getNowSuggestion` featuring:
+    - Current block or suggested subtask with estimate and goal deadline.
+    - Tabular duration counters ("how long", "what comes next").
+    - "Done" button (completes subtask or block and refreshes suggestion).
+    - "Skip, suggest another" button (cycles through alternate fitting candidates).
+  - Collapsible Goals Panel on the left with smooth 200ms slide transition, resizing timetable.
+  - Day Slide-Over panel opened by clicking any date header:
+    - Persistent daily focus intention notes.
+    - Schedule listing with inline edit/delete.
+    - Add block form with title, start, end, nature (fixed/flexible), and goal linking.
+  - Click-to-edit block modal for all grid blocks with delete confirmation.
+  - Zero linter warnings, 15/15 tests passing, responsive down to 1024px.
 
 ---
 
 ## 4. Current State & Next Steps
-- **Current State**: Blank app shell and foundation completely built, seed data integrated, 15/15 Vitest tests passing, build passing.
-- **Future UI Steps (Do NOT build until requested)**:
-  1. *Daily Timeblock Canvas*: 24h hairline grid with tactile fixed and flexible blocks.
-  2. *Editorial Goal Ledger*: Muted desaturated badges, subtask progress checkmarks, estimate tallies.
-  3. *AI Assistant Tool Bridge*: Expose `src/core/actions.ts` via tool schemas / copilot interface.
-  4. *SQLite Persistence Upgrade*: Swap `LocalStorageAdapter` for SQLite (e.g. wa-sqlite / sql.js or backend adapter).
-
+- **Current State**: Main Timetable Screen fully operational, backed by pure actions and persistent storage.
+- **Next Milestone**:
+  1. *Interactive Goals Ledger Panel*: Expand the left panel into a full interactive goal management system (create/edit goals, add subtasks, re-order, estimate tallies).
+  2. *AI Assistant Tool Bridge*: Expose `src/core/actions.ts` via structured tool declarations.
+  3. *SQLite Persistence Upgrade*: Swap `LocalStorageAdapter` for SQLite WASM.
