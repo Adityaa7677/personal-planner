@@ -1,0 +1,70 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@theme {
+  --color-paper: var(--color-paper);
+  --color-paper-surface: var(--color-paper-surface);
+  --color-paper-muted: var(--color-paper-muted);
+  --color-paper-wash: var(--color-paper-wash);
+
+  --color-hairline: var(--color-hairline);
+  --color-hairline-strong: var(--color-hairline-strong);
+
+  --color-ink: var(--color-ink);
+  --color-ink-secondary: var(--color-ink-secondary);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-ink-faint: var(--color-ink-faint);
+
+  --color-accent: var(--color-accent);
+  --color-accent-subtle: var(--color-accent-subtle);
+  --color-accent-contrast: var(--color-accent-contrast);
+
+  --color-goal-sage: var(--color-goal-sage);
+  --color-goal-clay: var(--color-goal-clay);
+  --color-goal-slate: var(--color-goal-slate);
+  --color-goal-sand: var(--color-goal-sand);
+  --color-goal-plum: var(--color-goal-plum);
+  --color-goal-graphite: var(--color-goal-graphite);
+
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+/* Base resets & typography discipline */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--motion-duration-base) var(--motion-timing),
+              color var(--motion-duration-base) var(--motion-timing);
+}
+
+/* Tabular numerals utility for times, dates, and durations */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hairline border utilities */
+.border-hairline {
+  border-width: 1px;
+  border-color: var(--color-hairline);
+}
+
+.border-hairline-strong {
+  border-width: 1px;
+  border-color: var(--color-hairline-strong);
+}
+
+/* Restrained, non-bouncy editorial transitions */
+.transition-editorial {
+  transition-property: color, background-color, border-color, opacity, transform;
+  transition-duration: var(--motion-duration-base);
+  transition-timing-function: var(--motion-timing);
+}

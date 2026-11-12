@@ -1,0 +1,97 @@
+/**
+ * ChronoPaper Design Tokens
+ * Calm, editorial, personal paper planner design system.
+ */
+
+:root {
+  /* Fonts */
+  --font-serif: "Fraunces", Georgia, Cambria, "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* 8px Spacing Grid */
+  --space-0-5: 4px;
+  --space-1: 8px;
+  --space-1-5: 12px;
+  --space-2: 16px;
+  --space-2-5: 20px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-10: 80px;
+  --space-12: 96px;
+
+  /* Border Radii (Disciplined, book-trimmed edges) */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-full: 9999px;
+
+  /* Motion: 150ms to 220ms ease-out only. Strictly no bounce. */
+  --motion-duration-fast: 150ms;
+  --motion-duration-base: 180ms;
+  --motion-duration-slow: 220ms;
+  --motion-timing: cubic-bezier(0, 0, 0.2, 1);
+  --transition-editorial: 180ms cubic-bezier(0, 0, 0.2, 1);
+
+  /* Light Theme (Archival paper desk) */
+  --color-paper: #F6F3EE;
+  --color-paper-surface: #FFFFFF;
+  --color-paper-muted: #EFECE6;
+  --color-paper-wash: #F9F8F5;
+
+  --color-hairline: #E2DDD5;
+  --color-hairline-strong: #CBC4B7;
+
+  --color-ink: #1B1A17;
+  --color-ink-secondary: #5C5850;
+  --color-ink-muted: #8E897F;
+  --color-ink-faint: #B5B0A6;
+
+  /* ONE single accent color: amber/terracotta marker ribbon */
+  --color-accent: #B45309;
+  --color-accent-subtle: #FBF3E8;
+  --color-accent-contrast: #FFFFFF;
+
+  /* Muted & Desaturated Goal Colors */
+  --color-goal-sage: #6B7F6D;
+  --color-goal-clay: #A86D5B;
+  --color-goal-slate: #5B7085;
+  --color-goal-sand: #9C8559;
+  --color-goal-plum: #7E6A7D;
+  --color-goal-graphite: #6E6B65;
+
+  /* Tabular Numerals by default for time measurements */
+  --font-tabular: tabular-nums;
+}
+
+/* Dark Theme (Nocturne desk) */
+.dark,
+[data-theme="dark"] {
+  --color-paper: #141311;
+  --color-paper-surface: #1B1A17;
+  --color-paper-muted: #24221E;
+  --color-paper-wash: #181715;
+
+  --color-hairline: #2A2723;
+  --color-hairline-strong: #3D3933;
+
+  --color-ink: #EDE8E1;
+  --color-ink-secondary: #ADA79B;
+  --color-ink-muted: #787369;
+  --color-ink-faint: #4E4A43;
+
+  --color-accent: #D97706;
+  --color-accent-subtle: #2A1E11;
+  --color-accent-contrast: #141311;
+
+  /* Muted dark goals */
+  --color-goal-sage: #7B8F7D;
+  --color-goal-clay: #B87D6B;
+  --color-goal-slate: #6B8095;
+  --color-goal-sand: #AC9569;
+  --color-goal-plum: #8E7A8D;
+  --color-goal-graphite: #7E7B75;
+}
